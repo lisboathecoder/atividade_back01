@@ -1,4 +1,6 @@
 import express from "express"
+import bruxos from "./src/data/bruxos.js";
+
 const serverPort = 3000;
 const app = express().use(express.json());
   app.get('/', (req, res) => {
@@ -49,6 +51,7 @@ app.get('/casas', (req, res) => {
 app.get("/bruxos", (req, res) => {
     res.json(bruxos);
 });
+
 // Iniciar servidor
 app.listen(serverPort, () => {
   console.log(`⚡ Servidor Hogwarts iniciado em: http://localhost:${serverPort}`);
