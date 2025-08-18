@@ -38,15 +38,15 @@ app.get('/', (req, res) => {
 
 // Rota das casas
 app.get("/bruxos/casa/:casa", (req, res) => {
-    let casa = req.params.casa;
-    const bruxosDaCasa = bruxos.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
-    if (bruxosDaCasa.length > 0) {
-        res.status(200).json(bruxosDaCasa);
-    } else {
-        res.status(404).json({
-            mensagem: "Nenhum bruxo encontrado nessa casa!"
-        })
-    }
+  let casa = req.params.casa;
+  const bruxosDaCasa = bruxos.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
+  if (bruxosDaCasa.length > 0) {
+    res.status(200).json(bruxosDaCasa);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
 });
 
 app.get("/bruxos", (req, res) => {
@@ -59,29 +59,29 @@ app.get("/bruxos/:id", (req, res) => {
   if (bruxo) {
     res.status(200).json(bruxo);
   } else {
-    res.status(404).json ({
-    "success": false,
-    "error": "Bruxo não encontrado",
-    "message": "Nenhum bruxo",
-    "codigo": "WIZARD_NOT_FOUND"
-  });
+    res.status(404).json({
+      "success": false,
+      "error": "Bruxo não encontrado",
+      "message": "Nenhum bruxo",
+      "codigo": "WIZARD_NOT_FOUND"
+    });
   }
 });
-app.get("/bruxos/nome/:nome"), (req,res) => {
+app.get("/bruxos/nome/:nome"), (req, res) => {
   let nome = req.params.nome.toLowerCase();
 
   const bruxoEncontrados = bruxos.filter(b => b.nome.toLowerCase().includes(nome));
-   if (bruxoEncontrados.length > 0) {
-    res.status(200).json(bruxoEncontrados) ({
+  if (bruxoEncontrados.length > 0) {
+    res.status(200).json(bruxoEncontrados)({
       "sucess": true
     })
   } else {
-    res.status(404).json ({
-    "success": false,
-    "error": "Bruxo não encontrado",
-    "message": "Nenhum bruxo",
-    "codigo": "WIZARD_NOT_FOUND"
-  });
+    res.status(404).json({
+      "success": false,
+      "error": "Bruxo não encontrado",
+      "message": "Nenhum bruxo",
+      "codigo": "WIZARD_NOT_FOUND"
+    });
   }
 }
 // Iniciar servidor
