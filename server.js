@@ -61,9 +61,7 @@ app.get("/bruxos/:id", (req, res) => {
     res.status(404).json;
     console.log("bruxo não encontrado!");
   }
-
-
-})
+});
 // Iniciar servidor
 app.listen(serverPort, () => {
   console.log(`⚡ Servidor Hogwarts iniciado em: http://localhost:${serverPort}`);
