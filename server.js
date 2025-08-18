@@ -67,23 +67,19 @@ app.get("/bruxos/:id", (req, res) => {
     });
   }
 });
-app.get("/bruxos/nome/:nome"), (req, res) => {
+app.get("/bruxos/nome/:nome", (req, res) => {
   let nome = req.params.nome.toLowerCase();
-
-  const bruxoEncontrados = bruxos.filter(b => b.nome.toLowerCase().includes(nome));
-  if (bruxoEncontrados.length > 0) {
-    res.status(200).json(bruxoEncontrados)({
-      "sucess": true
-    })
+  const bruxosEncontrados = bruxos.filter(b =>
+    b.nome.toLowerCase().includes(nome)
+  );
+  if (bruxosEncontrados.length > 0) {
+    res.status(200).json(bruxosEncontrados);
   } else {
     res.status(404).json({
-      "success": false,
-      "error": "Bruxo não encontrado",
-      "message": "Nenhum bruxo",
-      "codigo": "WIZARD_NOT_FOUND"
+      mensagem: "Bruxo(s) nao encontrado(s)!"
     });
   }
-}
+});
 // Iniciar servidor
 app.listen(serverPort, () => {
   console.log(`⚡ Servidor Hogwarts iniciado em: http://localhost:${serverPort}`);
