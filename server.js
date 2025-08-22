@@ -49,10 +49,31 @@ app.get("/bruxos/casa/:casa", (req, res) => {
   }
 });
 
+app.get("/bruxos/vivos/", (req, res) => {
+  const resultado = bruxos.filter(b => b.status)
+  if(resultado) {
+    res.status(200).json(resultado)
+  } else {
+    res.status(404) ({
+      mensagem: "Nenhum bruxo vivo encontrado!"
+    })
+  }
+})
+app.get("/bruxos/mortos/", (req, res) => {
+  const resultado = bruxos.filter(b => !b.status)
+  if(resultado) {
+    res.status(200).json(resultado)
+  } else {
+    res.status(404) ({
+      mensagem: "Nenhum bruxo morto encontrado!"
+    })
+  }
+})
+
 app.get("/bruxos", (req, res) => {
   res.json(bruxos);
 });
-app.get("/bruxos/:id", (req, res) => {
+app.get("/bruxos/id/:id", (req, res) => {
   let id = req.params.id;
   id = parseInt(id);
   const bruxo = bruxos.find(b => b.id === id);
@@ -60,10 +81,7 @@ app.get("/bruxos/:id", (req, res) => {
     res.status(200).json(bruxo);
   } else {
     res.status(404).json({
-      "success": false,
-      "error": "Bruxo não encontrado",
-      "message": "Nenhum bruxo",
-      "codigo": "WIZARD_NOT_FOUND"
+      "error": "Bruxo não encontrado com esse id",
     });
   }
 });
@@ -76,7 +94,7 @@ app.get("/bruxos/nome/:nome", (req, res) => {
     res.status(200).json(bruxosEncontrados);
   } else {
     res.status(404).json({
-      mensagem: "Bruxo(s) nao encontrado(s)!"
+      mensagem: "Bruxo(s) não encontrado(s) com esse nome!"
     });
   }
 });
