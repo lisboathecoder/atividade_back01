@@ -6,7 +6,7 @@ const app = express().use(express.json());
 app.get('/', (req, res) => {
   res.send(`
     <div style="
-      background: linear-gradient(135deg, #1a237e, #3949ab);
+      background: linear-gradient(135deg,rgb(255, 0, 0) 15% ,rgb(0, 34, 255) );
       color: white;
       padding: 50px;
       text-align: center;
@@ -32,13 +32,111 @@ app.get('/', (req, res) => {
       <div style="margin-top: 30px;">
         <span style="font-size: 1.1rem;">🦁 Grifinória | 🐍 Sonserina | 🦅 Corvinal | 🦡 Lufa-lufa</span>
       </div>
+
+      <div style="margin-top: 50px;">
+        <h2 style="font-size: 2rem; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+          Explore o Mundo Mágico
+        </h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+          <a href="/bruxos" style="
+            background-color: #ffd700;
+            color: #1a237e;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Lista de Bruxos
+          </a>
+          <a href="/casas" style="
+            background-color: #ffd700;
+            color: #1a237e;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Casas de Hogwarts
+          </a>
+          <a href="/varinhas" style="
+            background-color: #ffd700;
+            color: #1a237e;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Varinhas Mágicas
+          </a>
+          <a href="/pocoes" style="
+            background-color: #ffd700;
+            color: #1a237e;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Livro de Poções
+          </a>
+          <a href="/animais" style="
+            background-color: #ffd700;
+            color: #1a237e;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Animais Fantásticos
+          </a>
+          <a href="/bruxos/vivos" style="
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Bruxos Vivos
+          </a>
+          <a href="/bruxos/mortos" style="
+            background-color: #c62828;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+          ">
+            Bruxos Mortos
+          </a>
+        </div>
+      </div>
     </div>
   `);
 });
 
 const  {bruxos, casas, pocoes, varinhas, animais} = dados;
 
-// Rota das casas
 app.get("/bruxos/casa/:casa", (req, res) => {
   let casa = req.params.casa;
   const bruxosDaCasa = bruxos.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
