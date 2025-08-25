@@ -1,5 +1,5 @@
 import express from "express"
-import bruxos from "./src/data/bruxos.js";
+import dados from "./src/data/dados.js";
 
 const serverPort = 3000;
 const app = express().use(express.json());
@@ -35,6 +35,8 @@ app.get('/', (req, res) => {
     </div>
   `);
 });
+
+const  {bruxos, casas, pocoes, varinhas, animais} = dados;
 
 // Rota das casas
 app.get("/bruxos/casa/:casa", (req, res) => {
@@ -96,6 +98,93 @@ app.get("/bruxos/nome/:nome", (req, res) => {
     res.status(404).json({
       mensagem: "Bruxo(s) não encontrado(s) com esse nome!"
     });
+  }
+});
+app.get("/casas/", (req,res) => {
+  if(casas.length > 0) {
+    res.status(200).json(casas);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhuma casa encontrada!"
+    });
+  }
+});
+app.get("/casas/:id", (req,res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const casasId = casas.find(d => d.id === id);
+  if(casas.length > 0) {
+    res.status(200).json(casasId);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhuma casa encontrada!"
+    });
+  }
+});
+
+app.get("/varinhas/", (req,res) => {
+  if(varinhas.length > 0) {
+    res.status(200).json(varinhas);
+  } else {
+    res.status(404).json({
+      mensagem: "Essa varinha não é de ninguém!"
+    });
+  }
+})
+app.get("/varinhas/:id", (req,res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const varinhasId = varinhas.find(d => d.id === id);
+  if(varinhas.length > 0) {
+    res.status(200).json(varinhasId);
+  } else {
+    res.status(404).json({
+      mensagem: "Essa varinha não é de ninguém!"
+    });
+  }
+})
+app.get("/pocoes", (req,res) => {
+  if(pocoes.length > 0) {
+    res.status(200).json(pocoes);
+  } else {
+    res.status(404).json({
+      mensagem: "Essa poção não existe!"
+    });
+  }
+});
+app.get("/pocoes/:id", (req,res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const pocoesId = pocoes.find(d => d.id === id);
+  if(pocoes.length > 0) {
+    res.status(200).json(pocoesId);
+  } else {
+    res.status(404).json({
+      mensagem: "Poção não encontrado!"
+    });
+  }
+});
+
+app.get("/animais", (req,res) => {
+  if(animais.length > 0) {
+    res.status(200).json(animais);
+  } else {
+    res.status(404).json({
+      mensagem: "Animal não encontrado!"
+    })
+  }
+});
+
+app.get("/animais/:id", (req,res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const animaisId = animais.find(d => d.id === id);
+  if(animais.length > 0) {
+    res.status(200).json(animaisId);
+  } else {
+    res.status(404).json({
+      mensagem: "Animal não encontrado!"
+    })
   }
 });
 // Iniciar servidor
