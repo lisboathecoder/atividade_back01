@@ -144,7 +144,7 @@ app.get("/bruxos/casa/:casa", (req, res) => {
     res.status(200).json(bruxosDaCasa);
   } else {
     res.status(404).json({
-      mensagem: "Nenhum bruxo encontrado nessa casa!"
+      "mensagem": "Nenhum bruxo encontrado nessa casa!"
     })
   }
 });
@@ -155,7 +155,7 @@ app.get("/bruxos/vivos/", (req, res) => {
     res.status(200).json(resultado)
   } else {
     res.status(404) ({
-      mensagem: "Nenhum bruxo vivo encontrado!"
+      "mensagem": "Nenhum bruxo vivo encontrado!"
     })
   }
 })
@@ -165,7 +165,7 @@ app.get("/bruxos/mortos/", (req, res) => {
     res.status(200).json(resultado)
   } else {
     res.status(404) ({
-      mensagem: "Nenhum bruxo morto encontrado!"
+      "mensagem": "Nenhum bruxo morto encontrado!"
     })
   }
 })
@@ -181,7 +181,7 @@ app.get("/bruxos/id/:id", (req, res) => {
     res.status(200).json(bruxo);
   } else {
     res.status(404).json({
-      "error": "Bruxo não encontrado com esse id",
+      "mensagem": "Bruxo não encontrado com esse id",
     });
   }
 });
@@ -194,16 +194,16 @@ app.get("/bruxos/nome/:nome", (req, res) => {
     res.status(200).json(bruxosEncontrados);
   } else {
     res.status(404).json({
-      mensagem: "Bruxo(s) não encontrado(s) com esse nome!"
+      "mensagem": "Bruxo(s) não encontrado(s) com esse nome!"
     });
   }
 });
-app.get("/casas/", (req,res) => {
+app.get("/casas", (req,res) => {
   if(casas.length > 0) {
     res.status(200).json(casas);
   } else {
     res.status(404).json({
-      mensagem: "Nenhuma casa encontrada!"
+      "mensagem": "Nenhuma casa encontrada!"
     });
   }
 });
@@ -215,17 +215,17 @@ app.get("/casas/:id", (req,res) => {
     res.status(200).json(casasId);
   } else {
     res.status(404).json({
-      mensagem: "Nenhuma casa encontrada!"
+      "mensagem": "Nenhuma casa encontrada!"
     });
   }
 });
 
-app.get("/varinhas/", (req,res) => {
+app.get("/varinhas", (req,res) => {
   if(varinhas.length > 0) {
     res.status(200).json(varinhas);
   } else {
     res.status(404).json({
-      mensagem: "Essa varinha não é de ninguém!"
+      "mensagem": "Essa varinha não é de ninguém!"
     });
   }
 })
@@ -237,7 +237,7 @@ app.get("/varinhas/:id", (req,res) => {
     res.status(200).json(varinhasId);
   } else {
     res.status(404).json({
-      mensagem: "Essa varinha não é de ninguém!"
+      "mensagem": "Essa varinha não é de ninguém!"
     });
   }
 })
@@ -246,7 +246,7 @@ app.get("/pocoes", (req,res) => {
     res.status(200).json(pocoes);
   } else {
     res.status(404).json({
-      mensagem: "Essa poção não existe!"
+      "mensagem": "Essa poção não existe!"
     });
   }
 });
@@ -258,7 +258,7 @@ app.get("/pocoes/:id", (req,res) => {
     res.status(200).json(pocoesId);
   } else {
     res.status(404).json({
-      mensagem: "Poção não encontrado!"
+      "mensagem": "Poção não encontrado!"
     });
   }
 });
@@ -268,7 +268,7 @@ app.get("/animais", (req,res) => {
     res.status(200).json(animais);
   } else {
     res.status(404).json({
-      mensagem: "Animal não encontrado!"
+      "mensagem": "Animal não encontrado!"
     })
   }
 });
@@ -281,7 +281,7 @@ app.get("/animais/:id", (req,res) => {
     res.status(200).json(animaisId);
   } else {
     res.status(404).json({
-      mensagem: "Animal não encontrado!"
+      "mensagem": "Animal não encontrado!"
     })
   }
 });
